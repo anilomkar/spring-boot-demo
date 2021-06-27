@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: first-k8s-deploy
+spec:
+  replicas: 5
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: first-pod
+  template:
+    metadata:
+      labels:
+        app: first-pod
+    spec:
+      terminationGracePeriodSeconds: 1
+      containers:
+        - name: first-pod
+          #image: anilomkar/myapps:spring-docker-demo
+          image: anilomkar/myapps:first-container
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080

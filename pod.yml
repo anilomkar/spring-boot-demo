@@ -1,0 +1,13 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: first-pod
+  labels:
+    app: "first-pod"
+    ver: "1.0"
+spec:
+  containers:
+    - name: spring-pod-demo
+      image: anilomkar/myapps:spring-docker-demo
+      ports:
+        - containerPort: 8080

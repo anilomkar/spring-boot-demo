@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: first-svc-nodeport
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 8080
+      nodePort: 31111
+      protocol: TCP
+  selector:
+    app: first-pod

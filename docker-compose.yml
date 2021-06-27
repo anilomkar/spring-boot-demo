@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  node-app:
+    image: anilomkar/myapps:node-app
+    deploy:
+        replicas: 5            
+    ports:
+      - target: 3000
+        published: 8000
+
+  spring-docker-demo:
+    image: anilomkar/myapps:spring-docker-demo
+    deploy:
+        replicas: 5
+    ports:
+      - target: 8080
+        published: 8001
+
